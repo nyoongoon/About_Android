@@ -1,6 +1,123 @@
 # About_Android
 안드로이드를 공부하면서 알게 된 것을 기록하는 저장소입니다.
 
+# 컴포넌트 
+- 어플리케이션은 컴포넌트로 이뤄짐
+### activity
+- 사용자 UI, UX 
+### service
+- 백그라운드 실행 프로그램
+### broadcast reciver
+- Intent가 이곳에
+### content provider
+
+## Activity
+- UI 페이지 하나.
+- Event-Driven 프로그래밍 
+- 액티비티들이 모여서 애플리케이션이 됨. 
+
+## Service
+- 백그라운드에서 실행되는 컴포넌트로서 오랫동안 실행되는 작업이나 원격 프로세스를 위한 작업
+- ex) 배경음악을 연주하는 작업. 
+- 액티비티는 활성화시에만 작동하는데 반면, 서비스는 백그라운드에서 작동 가능. (독립 스레드)
+
+## Broadcast Reciver
+- 방송을 받고 반응하는 컴포넌트
+  
+## Content Provider
+-  데이터를 관리하고 다른 애플리케이션에게 제공하는 컴포넌트 
+- (전화번호부에 번호 저장하면 카카오톡에서도 보이는 개념)
+
+### PC 애플리케이션과 차이점
+- 다른 애플리케이션의 코드 사용 X
+- ex) 카톡의 데이터를 스카이프가 가져올 수 없다.
+- 안드로이드는 다른 애플리케이션의 컴포넌트 사용가능.
+
+
+## Intent
+- 애플리케이션의 의도를 적어서 안드로이드에 전달하면 안드로이드가 가장 적절한 컴포넌트를 찾아서 활성화하고 실행
+
+## Menifest File
+- 적재목록(적하목록)
+- 구조화된 정보처리에 적합한 XML 파일 이용. 
+
+## XML (extensable markup language)
+- xml은 안드로이드에서 많이 사용
+- sgml의 부분 집합으로 웹 상에서 구조화된 텍스트 형식의 문서를 전송하고 수신하며 처리가 가능하도록 만든 마크업 언어
+  
+
+
+# Class MainActicity 
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle 
+    	savedInstanceState) { // create이벤트 발생시 실행
+        super.onCreate(savedInstanceState);
+        //R은 리소스(res디렉토리)의 약자(레이아웃이라는 리소스)
+        setContentView(R.layout.activity_main);
+    }
+}
+```
+
+
+# 안드로이드 앱의 기본 구조
+### 일반적인 앱 작성 절차
+- 사용자 인터페이스 작성
+- 자바 코드 작성
+- 매니페스트 파일 작
+
+### 패키지 폴더
+- java, Gradle, res, manifest
+- res -> drawable에는 해상도 별로 아이콘 파일이 저장, layout에는 화면의 구성을 정의. values에는 문자열과 같은 리소스 가 저장. menu에는 메뉴 리소스들이 저장됨. 
+
+### onCreate()
+- 일조으이 main 함수의 역할
+- onCreate() 메소드는 액티비티가 생성되는 순간에 딱 한 번 호출
+- 모든 초기화와 사용자 인터페이스 설정이 여기에 들어간다. 
+
+
+### setContentView(R.layout.activity_main)
+- setContentView()함수는 액티비티의 화면을 설정
+- R.layout.activity_main은 activity_main.xml 파일을 나타낸다.
+
+
+# 소스코드와 XML과 리소스
+### 안드로이드 앱 실행이 시작되는 곳
+- 안드로이드에는 main()이 없음
+- 액티비티 별로 실행됨
+- 액티비티 중에서 onCreate() 메소드가 가장 먼저 실행 됨.  
+### <Text View>의 XML 속성 설명
+- xmls:android : xml name space의 선언으로 안드로이드 도구에 안드로이드 name space에 정의된 속성들을 참고하려고 한다는 것을 함시. xml 파일에서 항상 최외곽 태그는 이 속성을 정의. 
+- android:id TextView 요소에 유일한 아이디를 할당. 이 아이디를 이용해서 소스 코드에서 이 텍스트 뷰를 참조. 
+- android:layout_width 화면에서 얼마나 폭을 차지할 것인지를 정의. "match_parent"는 전체 화면의 폭을 다 차지하는 것을 의미.
+- android:layout_heigt 화면에서 길이를 얼마나 차지할 것인지를 정의. "wrap_content"는 콘텐츠를 표시할 정도만 차지하는 것을 의미.
+- android:text 화면에 표시하는 텍스트를 설정. 이 속성은 예제와 같이 하드코딩될 수도 있고 아니면 문자열 리소스의 개념을 사용할 수도 있음. 
+
+### cf) 자바 oop
+- Object 객체에는 두가지 관게
+- "is a" 관계 : A is a B -> 상속(inheritance)
+- "has a" 관계 : A has a B -> 포함(composite)
+
+### 리소스 
+- 안드로이드에서 레이아웃, 이미지, 문자열들을 리소스로 취급.
+- drawable -> 이미지
+- layout -> 뷰의 배치
+- mipmap -> 특이한 형태의 이미지들(아이콘 등)
+- values -> 색, 문자열, 스타일
+
+### 코드와 리소스 분리 이유
+- 안드로이드가 탑재된 장치들이 다양해지면서 언어나 화면 크기에 따라서, 리소스를 다크게 하는 것이 필요 !
+- 문자열도 xml로 기술하는 것이 바람직 (언어별 버전 등)
+
+### 메니페스트 파일
+- app의 전체 컴포넌트를 기술
+
+### 에뮬레이터 로그캣
+- 디버깅용 메세지 출력 
+
+
 <br/><br/>
 # Gradle 
 - 빌드 자동화 시스템 
