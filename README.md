@@ -224,3 +224,8 @@ public class MainActivity extends AppCompatActivity {
 - 패딩이란 뷰의 경계와 뷰의 내용물 사이의 간격
 - 마진이랑 자식 뷰 주위의 여백  
   ![image](https://user-images.githubusercontent.com/68639744/156681655-28c43663-9683-484e-a63a-e30b37f20b14.png)
+  
+## 레이아웃
+- 뷰들을 화면에 배치하는 방법
+- 레이아웃 클래스는 뷰들의 위치와 크기를 결정.
+  
