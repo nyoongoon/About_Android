@@ -300,6 +300,39 @@ public class MainActivity extends AppCompatActivity {
 - 뷰가 레이아웃에 추가될 때, 보이지 않는 뷰의 Border가 있음. 이것을 뷰의 영역(Box)라고 하는데 뷰는 Border를 기준으로 바깥쪽과 안쪽 공간을 띄움.
 - Border의 바깥쪽을 Margin, Border의 안쪽을 Padding이라고 부름.  
  <br/><br/>  
+
+  
+# Inflater 
+- 부분화면을 메모리에 객체화 하려면 인플레이터를 사용해야함.
+- 안드로이드는 이를 위해 시스템 서비스(단말이 시작되면서 항상 실행되는 서비스)로 LayoutInflater라는 클래스를 제공.
+- getSystemService()메서드를 이용하여 LayoutInflater 객체를 참조한 후 사용해야 함.
+- 부분화면은 LayoutInflater객체를 사용해 뷰그룹 객체로 객체화 한 후 메인 레이아웃에 추가해야함.   
+<br/><br/> 
+  
+# Intent
+- android.content 패키지 안에 정의됨
+- 앱 구성 요소 간 작업 수행을 위한 정보를 전달하는 역할.
+- startActivity() or startActivityForResult() : 액티비티를 화면에 띄울 때 사용
+- startService() : 서비스를 시작할 때
+- broadcastIntent() : 인텐트 객체를 브로드캐스팅 방식으로 전송할 때. 
+
+### Intent의 기본 구성 요소 : Action, Data
+- Action : 수행할 기능
+- Data : 수행될 대상의 데이터 
+
+### 명시적 인텐트 vs 암시적 인텐트
+- 명시적 인텐트 : 인텐트에 클래스 객체나 컴포넌트 이름을 지정하여 호출할 대상을 확실히 알 수 있는 경우.
+- 암시적 인텐트 : MIME타임에 따라 시스템에서 적절한 다른 앱의 액티비티를 찾은 후 띄우는 방식. 
+
+### 암시적 인텐트의 여러 속성
+- Action, Data
+- Category(범주) : 액션이 실행되는 데 필요한 추가적인 정보 제공. 
+- ex) CATEGORY_LAUNCHER : 최상위 앱으로 설치된 앱들의 목록을 보여주는 애플리케이션 런처 화면에 이 앱을 보여주어야 한다는 것을 의미.
+- Type(타입) : 인텐트에 들어가는 데이터의 MIME타입을 명시적으로 지정.
+- Component(컴포넌트) : 인텐트에 사용될 컴포넌트 클래스의 이름을 명시적으로 지정. 
+- cf) 새로운 액티비티를 정하고 그 액티비티 클래스 객체를 인텐트에 전달하여 실행하는 방법도 컴포넌트를 지정하는 방식과 같다.
+- Extra Data(부가 데이터) : 추가적인 정보를 넣을 수 있도록 번들(Bundle)객체를 담고 있음. 이 객체를 통해 인텐트 안에 더 많은 정보를 넣어 다른 앱 구성 요소에 전달.
+ <br/><br/>  
   
   
 # MotionEvent 객체
@@ -310,7 +343,7 @@ MotionEvent.ACTION_DOWN // 손가락이 눌렸을 때
 MotionEvent.ACTION_MOVE // 손가락이 눌린 상태로 움직일 때
 MotionEvent.ACTION_UP // 손가락이 떼졌을 때
 ```  
- <br/><br/>  
+<br/><br/>  
   
 # shouldOverrideUrlLoading(WebView view, WebResourceRequest request)
 - WebView에 URL이로드 되려고 할 때 호스트 응용 프로그램이 제어할 수 있는 기회를 제공한다. shouldOverrideUrlLoading 영역에서 내부적으로 url에 맞는 행동을(내부 화면 호출 후 종료) 하는 경우, 내부처리를 진행하고 true를 반환하여 URL 로드를 중단거나, false을 반환하여 WebView가 평소와 같이 URL로드를 진행하도록 처리한다.  
