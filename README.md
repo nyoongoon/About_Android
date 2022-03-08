@@ -302,6 +302,16 @@ public class MainActivity extends AppCompatActivity {
  <br/><br/>  
   
   
+# MotionEvent 객체
+- 이 객체에는 액션 정보나 터치한 곳의 좌표 등이 들어 있음. 
+- getAction()으로 액션정보 확인 가능 -> 손가락이 눌렸는지 눌린 상태로 움직이는지, 손가락이 떼졌는지 알 수 있음.
+``` java 
+MotionEvent.ACTION_DOWN // 손가락이 눌렸을 때
+MotionEvent.ACTION_MOVE // 손가락이 눌린 상태로 움직일 때
+MotionEvent.ACTION_UP // 손가락이 떼졌을 때
+```  
+ <br/><br/>  
+  
 # shouldOverrideUrlLoading(WebView view, WebResourceRequest request)
 - WebView에 URL이로드 되려고 할 때 호스트 응용 프로그램이 제어할 수 있는 기회를 제공한다. shouldOverrideUrlLoading 영역에서 내부적으로 url에 맞는 행동을(내부 화면 호출 후 종료) 하는 경우, 내부처리를 진행하고 true를 반환하여 URL 로드를 중단거나, false을 반환하여 WebView가 평소와 같이 URL로드를 진행하도록 처리한다.  
 <br/><br/>  
