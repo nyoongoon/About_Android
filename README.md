@@ -360,6 +360,15 @@ MotionEvent.ACTION_UP // 손가락이 떼졌을 때
 ```  
 <br/><br/>  
   
+# Service
+ - 백그라운드에서 실행되는 앱의 구성요서.
+ - 시스템에서 관리
+ - 매니페스트파일에 등록 필요.
+ - 서비스를 실행하려면 메인 액티비티에서 인텐트 객체 담아서 startService() 호출.
+ - startService()를 여러번 실행하여 인텐트를 전달하는 목적으로도 사용. 
+ - 단말이 항상 실행되어 있는 상태로 다른 단말과 데이터를 주고받거나 필요한 기능을 백그라운드에서 실행.  
+<br/><br/> 
+  
 # shouldOverrideUrlLoading(WebView view, WebResourceRequest request)
 - WebView에 URL이로드 되려고 할 때 호스트 응용 프로그램이 제어할 수 있는 기회를 제공한다. shouldOverrideUrlLoading 영역에서 내부적으로 url에 맞는 행동을(내부 화면 호출 후 종료) 하는 경우, 내부처리를 진행하고 true를 반환하여 URL 로드를 중단거나, false을 반환하여 WebView가 평소와 같이 URL로드를 진행하도록 처리한다.  
 <br/><br/>  
